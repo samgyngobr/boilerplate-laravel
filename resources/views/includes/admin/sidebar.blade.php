@@ -23,6 +23,30 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
+        Conteúdo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contentCollapsePages"
+            aria-expanded="true" aria-controls="contentCollapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Páginas</span>
+        </a>
+        <div id="contentCollapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/">Page</a>
+                <a class="collapse-item" href="/">Page</a>
+                <a class="collapse-item" href="/">Page</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
         Interface
     </div>
 
