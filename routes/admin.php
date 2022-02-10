@@ -11,4 +11,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get( '/' , 'Index@index' );
 
+    Route::resource( '/profile' , 'Profile' );
+    Route::resource( '/users'   , 'Users'   );
+
 });
