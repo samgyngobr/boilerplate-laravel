@@ -31,13 +31,17 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contentCollapsePages"
             aria-expanded="true" aria-controls="contentCollapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Páginas</span>
+            <span>CMS</span>
         </a>
         <div id="contentCollapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/">Page</a>
-                <a class="collapse-item" href="/">Page</a>
-                <a class="collapse-item" href="/">Page</a>
+
+                @foreach ($areas as $area)
+
+                    <a class="collapse-item" href="/"> {{$area->label}} </a>
+
+                @endforeach
+
             </div>
         </div>
     </li>
