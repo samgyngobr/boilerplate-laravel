@@ -56,6 +56,12 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'sk_url'              => '/admin/sk/',
+    'sk_file_path'        => '/uploads/files/',
+    'sk_file_path_thumbs' => '/uploads/thumbs/',
+    'sk_date_format'      => 'd/m/Y',
+    'sk_datetime_format'  => 'd/m/Y H:i',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -165,6 +171,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Samgyngobr\Scarlet\ScarletServiceProvider::class,
 
         /*
          * Application Service Providers...
