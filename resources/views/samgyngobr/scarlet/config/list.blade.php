@@ -1,21 +1,18 @@
 
-@extends('samgyngobr.scarlet.app')
-
-
-@section('header')
-
-  <i class="dec fas fa-cog"></i>
-
-  <span>{{ __('scarlet.configuration') }}</span>
-
-  <a href="{{ $skUrl . 'config/create' }}" class="pull-left d-flex align-items-center text-white ">
-    <i class="fas fa-plus-circle"></i>
-  </a>
-
-@endsection
-
+@extends('layouts.admin')
 
 @section('content')
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+        <h1 class="h3 mb-0 text-gray-800">Configuration</h1>
+
+        <a href="{{ $skUrl . 'config/create' }}" class="pull-left btn btn-primary">
+            <i class="fas fa-plus-circle"></i>
+        </a>
+
+    </div>
 
   @if (session('success'))
     <div class="alert alert-success">

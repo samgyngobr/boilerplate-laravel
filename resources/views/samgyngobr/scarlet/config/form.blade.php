@@ -1,137 +1,127 @@
 
-@extends('samgyngobr.scarlet.app')
-
-
-@section('header')
-
-  <i class="dec fas fa-cog"></i>
-
-  <div class="d-flex gap-3">
-
-    <a href="{{$skUrl}}config" class="pull-left d-flex align-items-center text-white mr-4">
-      <i class="fas fa-chevron-left"></i>
-    </a>
-    <span>{{ __('scarlet.configuration') }} - {{$title ?? ''}}</span>
-
-  </div>
-
-@endsection
-
+@extends('layouts.admin')
 
 @section('content')
 
-  @if (session('success'))
-    <div class="alert alert-success">
-      {{ session('success') }}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">{{ __('scarlet.configuration') }} - {{$title ?? ''}}</h1>
+        <a href="{{$skUrl}}config" class="pull-left d-flex align-items-center text-white mr-4">
+            <i class="fas fa-chevron-left"></i>
+        </a>
     </div>
-  @endif
 
-  @if (session('error'))
-    <div class="alert alert-danger">
-      {{ session('error') }}
-    </div>
-  @endif
-
-  <form action="{{$url ?? ''}}" method="POST" enctype="multipart/form-data" >
-
-    @method( $method )
-    @csrf
-
-    <div class="row">
-      <div class="col-lg-8">
-
-        <div class="card elevation mb-4">
-
-          <div class="card-header"> {{ __('scarlet.details') }} </div>
-
-          <div class="card-body">
-
-              <div class="mb-3 row">
-                <label class="col-form-label col-md-2 text-start text-md-end" for="name">{{ __('scarlet.title') }}</label>
-                <div class="col-md-10">
-                  <input type="text" id="name" class="form-control" placeholder="{{ __('scarlet.title') }}" name="name" value="{{ $post->label ?? '' }}" >
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label class="col-form-label col-md-2 text-start text-md-end" >{{ __('scarlet.gallery') }}</label>
-                <div class="col-md-10 d-flex align-items-center">
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="gallery0" type="radio" value="0" name="gallery" {{ isset($post->gallery) && ( $post->gallery == 0 || !$post->gallery ) ? 'checked="checked"' : '' }} >
-                    <label class="form-check-label" for="gallery0"> {{ __('scarlet.no') }} </label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="gallery1" type="radio" value="1" name="gallery" {{ isset($post->gallery) && $post->gallery == 1 ? 'checked="checked"' : '' }} >
-                    <label class="form-check-label" for="gallery1"> {{ __('scarlet.yes') }} </label>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="mb-3 row">
-                <label class="col-form-label col-md-2 text-start text-md-end" >{{ __('scarlet.type') }}</label>
-                <div class="col-md-10 d-flex align-items-center">
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="multiple0" type="radio" value="0" name="multiple" {{ isset($post->multiple) && ( $post->multiple == 0 || !$post->multiple ) ? 'checked="checked"' : '' }} >
-                    <label class="form-check-label" for="multiple0"> {{ __('scarlet.unique') }} </label>
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="multiple1" type="radio" value="1" name="multiple" {{ isset($post->multiple) && $post->multiple == 1 ? 'checked="checked"' : '' }} >
-                    <label class="form-check-label" for="multiple1"> {{ __('scarlet.collection') }} </label>
-                  </div>
-
-                </div>
-              </div>
-
-          </div>
-
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
+    @endif
 
-        <h5 class="mb-4 pb-2 border-bottom" >
-
-          {{ __('scarlet.fields') }}
-
-          <a class="pull-right" data-bs-toggle="modal" data-bs-target="#new" href="#">
-            <i class="fas fa-plus-circle"></i>
-          </a>
-
-        </h5>
-
-        <div class="card elevation mb-4">
-          <div class="card-body has-table">
-
-            <table class="table" id="fieldsTable" >
-
-              <thead class="card-header">
-                <tr>
-                  <th>{{ __('scarlet.field') }}</th>
-                  <th width="15%" >{{ __('scarlet.type') }}</th>
-                  <th width="15%" >{{ __('scarlet.index') }}</th>
-                  <th width="15%" >{{ __('scarlet.options') }}</th>
-                </tr>
-              </thead>
-
-              <tbody></tbody>
-
-            </table>
-
-            <textarea class="d-none form-control" type="text" name="json" id="jsonField" readonly="" >{{$post->json ?? '' }}</textarea>
-
-          </div>
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
         </div>
+    @endif
 
-        <div class="mb-4">
-          <button type="submit" class="btn btn-success"> <i class="icon-ok"></i> Save </button>
-        </div>
+    <form action="{{$url ?? ''}}" method="POST" enctype="multipart/form-data" >
 
-      </div> <!-- / .row -->
-    </div> <!-- / .col-md-8 -->
+        @method( $method )
+        @csrf
 
-  </form>
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="card elevation mb-4">
+
+                    <div class="card-header"> {{ __('scarlet.details') }} </div>
+
+                    <div class="card-body">
+
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-md-2 text-start text-md-end" for="name">{{ __('scarlet.title') }}</label>
+                            <div class="col-md-10">
+                                <input type="text" id="name" class="form-control" placeholder="{{ __('scarlet.title') }}" name="name" value="{{ $post->label ?? '' }}" >
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-md-2 text-start text-md-end" >{{ __('scarlet.gallery') }}</label>
+                            <div class="col-md-10 d-flex align-items-center">
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="gallery0" type="radio" value="0" name="gallery" {{ isset($post->gallery) && ( $post->gallery == 0 || !$post->gallery ) ? 'checked="checked"' : '' }} >
+                                    <label class="form-check-label" for="gallery0"> {{ __('scarlet.no') }} </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="gallery1" type="radio" value="1" name="gallery" {{ isset($post->gallery) && $post->gallery == 1 ? 'checked="checked"' : '' }} >
+                                    <label class="form-check-label" for="gallery1"> {{ __('scarlet.yes') }} </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-form-label col-md-2 text-start text-md-end" >{{ __('scarlet.type') }}</label>
+                            <div class="col-md-10 d-flex align-items-center">
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="multiple0" type="radio" value="0" name="multiple" {{ isset($post->multiple) && ( $post->multiple == 0 || !$post->multiple ) ? 'checked="checked"' : '' }} >
+                                    <label class="form-check-label" for="multiple0"> {{ __('scarlet.unique') }} </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="multiple1" type="radio" value="1" name="multiple" {{ isset($post->multiple) && $post->multiple == 1 ? 'checked="checked"' : '' }} >
+                                    <label class="form-check-label" for="multiple1"> {{ __('scarlet.collection') }} </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <h5 class="mb-4 pb-2 border-bottom" >
+
+                    {{ __('scarlet.fields') }}
+
+                    <a class="pull-right" data-bs-toggle="modal" data-bs-target="#new" href="#">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+
+                </h5>
+
+                <div class="card elevation mb-4">
+                    <div class="card-body has-table">
+
+                        <table class="table" id="fieldsTable" >
+
+                            <thead class="card-header">
+                                <tr>
+                                    <th>{{ __('scarlet.field') }}</th>
+                                    <th width="15%" >{{ __('scarlet.type') }}</th>
+                                    <th width="15%" >{{ __('scarlet.index') }}</th>
+                                    <th width="15%" >{{ __('scarlet.options') }}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody></tbody>
+
+                        </table>
+
+                        <textarea class="d-none form-control" type="text" name="json" id="jsonField" readonly="" >{{$post->json ?? '' }}</textarea>
+
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <button type="submit" class="btn btn-success"> <i class="icon-ok"></i> Save </button>
+                </div>
+
+             </div> <!-- / .row -->
+        </div> <!-- / .col-md-8 -->
+
+    </form>
 
 
   <!-- sample modal content -->

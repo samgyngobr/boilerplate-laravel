@@ -1,5 +1,7 @@
 
-@extends('layouts.admin')
+@extends('layouts.admin', [
+    'includes' => [ 'dataTables' ]
+    ])
 
 @section('content')
 

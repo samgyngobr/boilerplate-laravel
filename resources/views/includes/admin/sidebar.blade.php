@@ -23,8 +23,15 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Conteúdo
+        Scarlet
     </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/sk/config">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Configuration</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -38,7 +45,7 @@
 
                 @foreach ($areas as $area)
 
-                    <a class="collapse-item" href="/"> {{$area->label}} </a>
+                    <a class="collapse-item" href="/admin/sk/{{$area->url}}"> {{$area->label}} </a>
 
                 @endforeach
 

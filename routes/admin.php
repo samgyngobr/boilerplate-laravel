@@ -1,13 +1,13 @@
 <?php
 
-Route::get(  '/login' , 'Auth@login' )->name('login');
-Route::post( '/login' , 'Auth@authenticate' );
+Route::get(  '/login' , 'Authentication@login' )->name('login');
+Route::post( '/login' , 'Authentication@authenticate' );
 
-Route::get( '/forgot-password' , 'Auth@forgotPassword' );
+Route::get( '/forgot-password' , 'Authentication@forgotPassword' );
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get( '/logout' , 'Auth@logout' );
+    Route::get( '/logout' , 'Authentication@logout' );
 
     Route::get( '/' , 'Index@index' );
 

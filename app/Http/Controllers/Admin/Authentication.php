@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FAuth;
+use Illuminate\Support\Facades\Auth;
 
-class Auth extends Controller
+class Authentication extends Controller
 {
 
     /**
@@ -26,7 +26,7 @@ class Auth extends Controller
      */
     public function logout()
     {
-        FAuth::logout();
+        Auth::logout();
         return redirect()->intended('/admin/login');
     }
 
@@ -45,7 +45,7 @@ class Auth extends Controller
             'password' => ['required'],
         ]);
 
-        if ( FAuth::attempt( $credentials ) )
+        if ( Auth::attempt( $credentials, $request->get('remember') ) )
         {
             $request->session()->regenerate();
             return redirect()->intended('admin');
