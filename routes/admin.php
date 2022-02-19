@@ -5,7 +5,7 @@ Route::post( '/login' , 'Authentication@authenticate' );
 
 Route::get( '/forgot-password' , 'Authentication@forgotPassword' );
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->name('admin.')->group(function () {
 
     Route::get( '/logout' , 'Authentication@logout' );
 

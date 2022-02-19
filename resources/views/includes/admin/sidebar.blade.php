@@ -11,7 +11,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
+    <li class="nav-item {{ Route::currentRouteName() == 'admin.' ? 'active' : '' }}">
         <a class="nav-link" href="/admin">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -26,21 +26,27 @@
         Scarlet
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/admin/sk/config">
+    <li class="nav-item {{ substr( Route::currentRouteName(), 0, 7 ) == 'config.' ? 'active' : '' }}">
+        <a class="nav-link" href="/admin/sk/config" >
             <i class="fas fa-fw fa-cog"></i>
             <span>Configuration</span>
         </a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{ Route::currentRouteName() == 'sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'active' : '' }} ">
+
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contentCollapsePages"
             aria-expanded="true" aria-controls="contentCollapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>CMS</span>
         </a>
-        <div id="contentCollapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+
+        <div id="contentCollapsePages"
+            class="collapse {{ Route::currentRouteName() == 'sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'show' : '' }} "
+            aria-labelledby="headingPages" data-parent="#accordionSidebar"
+            >
+
             <div class="bg-white py-2 collapse-inner rounded">
 
                 @foreach ($areas as $area)
@@ -51,6 +57,7 @@
 
             </div>
         </div>
+
     </li>
 
     <!-- Divider -->
@@ -62,7 +69,7 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li class="nav-item {{ substr( Route::currentRouteName(), 0, 11 ) == 'admin.users' ? 'active' : '' }} ">
         <a class="nav-link" href="/admin/users">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span>
