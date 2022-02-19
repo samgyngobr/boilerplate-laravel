@@ -252,6 +252,3 @@ function listGen( $data, $fieldLabels, $area, $url )
     return $str;
 
 }
-
-
-

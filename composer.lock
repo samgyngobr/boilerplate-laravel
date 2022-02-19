@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a6e0f87350e0e92da170ddb6a765bb4",
+    "content-hash": "8270105c58021862890578ee12d3c024",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -635,6 +635,109 @@
                 }
             ],
             "time": "2021-11-21T21:41:47+00:00"
+        },
+        {
+            "name": "gregwar/cache",
+            "version": "v1.0.13",
+            "target-dir": "Gregwar/Cache",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Cache.git",
+                "reference": "184cc341c25298ff7d584f86b55b6ca26626da4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gregwar/Cache/zipball/184cc341c25298ff7d584f86b55b6ca26626da4f",
+                "reference": "184cc341c25298ff7d584f86b55b6ca26626da4f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Gregwar\\Cache": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gregwar",
+                    "email": "g.passault@gmail.com"
+                }
+            ],
+            "description": "A lightweight file-system cache system",
+            "keywords": [
+                "cache",
+                "caching",
+                "file-system",
+                "system"
+            ],
+            "support": {
+                "issues": "https://github.com/Gregwar/Cache/issues",
+                "source": "https://github.com/Gregwar/Cache/tree/v1.0.13"
+            },
+            "time": "2021-04-20T07:23:58+00:00"
+        },
+        {
+            "name": "gregwar/image",
+            "version": "v2.1.0",
+            "target-dir": "Gregwar/Image",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Image.git",
+                "reference": "1cf64c34cbb22933b36727c16b15ed4d925b6fc6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gregwar/Image/zipball/1cf64c34cbb22933b36727c16b15ed4d925b6fc6",
+                "reference": "1cf64c34cbb22933b36727c16b15ed4d925b6fc6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "gregwar/cache": "^1.0.6",
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "sllh/php-cs-fixer-styleci-bridge": "~1.0",
+                "symfony/phpunit-bridge": "^2.7.4 || ^3.0"
+            },
+            "suggest": {
+                "behat/transliterator": "Transliterator provides ability to set non-latin1 pretty names"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Gregwar\\Image": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                }
+            ],
+            "description": "Image handling",
+            "homepage": "https://github.com/Gregwar/Image",
+            "keywords": [
+                "gd",
+                "image"
+            ],
+            "support": {
+                "issues": "https://github.com/Gregwar/Image/issues",
+                "source": "https://github.com/Gregwar/Image/tree/v2.1.0"
+            },
+            "time": "2021-02-17T16:00:53+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1760,16 +1863,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.56.0",
+            "version": "2.57.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "626ec8cbb724cd3c3400c3ed8f730545b744e3f4"
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/626ec8cbb724cd3c3400c3ed8f730545b744e3f4",
-                "reference": "626ec8cbb724cd3c3400c3ed8f730545b744e3f4",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a54375c21eea4811dbd1149fe6b246517554e78",
+                "reference": "4a54375c21eea4811dbd1149fe6b246517554e78",
                 "shasum": ""
             },
             "require": {
@@ -1852,7 +1955,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-21T17:08:38+00:00"
+            "time": "2022-02-13T18:13:33+00:00"
         },
         {
             "name": "nette/schema",
@@ -5847,16 +5950,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.13.3",
+            "version": "v1.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "53dd949a2134bd468f50defce85de566a7800dd9"
+                "reference": "57d2942d5edd89b2018d0a3447da321fa35baac7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/53dd949a2134bd468f50defce85de566a7800dd9",
-                "reference": "53dd949a2134bd468f50defce85de566a7800dd9",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/57d2942d5edd89b2018d0a3447da321fa35baac7",
+                "reference": "57d2942d5edd89b2018d0a3447da321fa35baac7",
                 "shasum": ""
             },
             "require": {
@@ -5903,7 +6006,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-02-11T14:28:50+00:00"
+            "time": "2022-02-17T19:55:30+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -6462,16 +6565,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.10",
+            "version": "9.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "d5850aaf931743067f4bfc1ae4cbd06468400687"
+                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d5850aaf931743067f4bfc1ae4cbd06468400687",
-                "reference": "d5850aaf931743067f4bfc1ae4cbd06468400687",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/665a1ac0a763c51afc30d6d130dac0813092b17f",
+                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f",
                 "shasum": ""
             },
             "require": {
@@ -6527,7 +6630,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.10"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.11"
             },
             "funding": [
                 {
@@ -6535,7 +6638,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-05T09:12:13+00:00"
+            "time": "2022-02-18T12:46:09+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -6780,16 +6883,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.13",
+            "version": "9.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "597cb647654ede35e43b137926dfdfef0fb11743"
+                "reference": "1883687169c017d6ae37c58883ca3994cfc34189"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/597cb647654ede35e43b137926dfdfef0fb11743",
-                "reference": "597cb647654ede35e43b137926dfdfef0fb11743",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1883687169c017d6ae37c58883ca3994cfc34189",
+                "reference": "1883687169c017d6ae37c58883ca3994cfc34189",
                 "shasum": ""
             },
             "require": {
@@ -6867,7 +6970,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.13"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.14"
             },
             "funding": [
                 {
@@ -6879,7 +6982,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-24T07:33:35+00:00"
+            "time": "2022-02-18T12:54:07+00:00"
         },
         {
             "name": "sebastian/cli-parser",
