@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 
+use Samgyngobr\Scarlet\Models\Scarlet;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +30,14 @@ class AppServiceProvider extends ServiceProvider
 
             $areas = DB::table('sk_area')->where('status', 1)->get();
             $view->with([ 'areas' => $areas ]);
+        });
+
+        \View::composer('layouts/main', function ($view) {
+
+            $sk = new Scarlet('details');
+            $dt = $sk->fetchUnique();
+
+            $view->with([ 'details' => $dt ]);
         });
 
     }
