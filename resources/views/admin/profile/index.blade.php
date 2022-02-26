@@ -21,13 +21,13 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="" class="form-label">Name</label>
-                            <input type="text" class="form-control" value="{{Auth::user()->name}}" name="name" >
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{Auth::user()->name}}" >
                         </div>
 
                         <div class="mb-3">
-                            <label for="name" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="name" value="{{Auth::user()->email}}" readonly >
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="{{Auth::user()->email}}" readonly >
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>

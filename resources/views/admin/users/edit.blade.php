@@ -29,77 +29,73 @@
     @endif
 
 
+    <!-- Content Row -->
     <div class="row">
-        <div class="col-lg-8">
 
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
 
-            <div class="card elevation mb-4">
-                <div class="card-header"> Edit </div>
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
+                </div>
+
                 <div class="card-body">
-                    <form method="post" class="form-horizontal" enctype="multipart/form-data" >
+                    <form method="post" action="" >
 
+                        @csrf
 
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-md-2 text-md-end" for="name">Name</label>
-                            <div class="col-md-10">
-                                <input type="text" id="name" class="form-control" placeholder="Name" name="name"
-                                    value="{{ ( isset( $post['name'] ) ? $post['name'] : $user->name ) }}" required >
-                            </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" value="{{ ( isset( $post['name'] ) ? $post['name'] : $user->name ) }}" name="name" >
                         </div>
 
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-md-2 text-md-end" for="email">E-mail</label>
-                            <div class="col-md-10">
-                                <input type="text" id="email" class="form-control" placeholder="E-mail"
-                                    value="{{ $user->email }}" readonly >
-                            </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="{{ $user->email }}" readonly >
                         </div>
 
-                        <div class="mb-3 row">
-                            <div class="col-md-10 offset-md-2">
-                                <button type="submit" class="btn btn-success">Save</button>
-                            </div>
-                        </div>
-
+                        <button type="submit" class="btn btn-primary">Save</button>
 
                     </form>
                 </div>
-            </div> <!-- / .card -->
 
+            </div>
+        </div>
 
-            <div class="card elevation mb-4">
-                <div class="card-header"> Password </div>
+        <div class="col-xl-6 col-lg-6">
+            <div class="card shadow mb-4">
+
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Change Password</h6>
+                </div>
+
                 <div class="card-body">
-                    <form method="post" class="form-horizontal" enctype="multipart/form-data" >
+                    <form method="post" action="" >
 
+                        @csrf
 
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-md-2 text-md-end" for="password">Password</label>
-                            <div class="col-md-10">
-                                <input type="text" id="password" class="form-control" placeholder="Password" name="password" required >
-                            </div>
+                        <div class="mb-3">
+                            <label for="old-pw" class="form-label">Old Password</label>
+                            <input type="password" class="form-control" id="old-pw" name="old-pw" >
                         </div>
 
-                        <div class="mb-3 row">
-                            <label class="col-form-label col-md-2 text-md-end" for="confirm">Confirm Password</label>
-                            <div class="col-md-10">
-                                <input type="text" id="confirm" class="form-control" placeholder="Confirm Password" name="confirm" required >
-                            </div>
+                        <div class="mb-3">
+                            <label for="new-pw" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new-pw" name="new-pw" >
                         </div>
 
-                        <div class="mb-3 row">
-                            <div class="col-md-10 offset-md-2">
-                                <button type="submit" class="btn btn-success">Change</button>
-                            </div>
+                        <div class="mb-3">
+                            <label for="confirm-pw" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-pw" name="confirm-pw" >
                         </div>
 
+                        <button type="submit" class="btn btn-primary">Save</button>
 
                     </form>
                 </div>
-            </div> <!-- / .card -->
 
+            </div>
+        </div>
 
-        </div> <!-- / .col-md-8 -->
-    </div> <!-- / .row -->
-
+    </div>
 @endsection
