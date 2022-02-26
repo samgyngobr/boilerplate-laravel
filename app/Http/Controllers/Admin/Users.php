@@ -9,6 +9,8 @@ use App\Models\User;
 
 class Users extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +23,8 @@ class Users extends Controller
         return view('admin/users/index', compact( "users" ) );
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,8 +32,11 @@ class Users extends Controller
      */
     public function create()
     {
-        //
+        $post = [];
+        return view('admin/users/create', compact("post"));
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,6 +49,8 @@ class Users extends Controller
         //
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -53,6 +62,8 @@ class Users extends Controller
         //
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -61,8 +72,13 @@ class Users extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $post = [];
+
+        return view('admin/users/edit', compact( "user", "post" ) );
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -76,6 +92,8 @@ class Users extends Controller
         //
     }
 
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -86,4 +104,7 @@ class Users extends Controller
     {
         //
     }
+
+
+
 }
