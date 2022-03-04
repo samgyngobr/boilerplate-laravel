@@ -34,7 +34,7 @@
             <div class="card elevation mb-4">
                 <div class="card-header"> New </div>
                 <div class="card-body">
-                    <form method="post" action="/admin/users" class="form-horizontal" enctype="multipart/form-data" >
+                    <form method="POST" action="/admin/users" class="form-horizontal" enctype="multipart/form-data" >
 
                         @method( 'POST' )
                         @csrf

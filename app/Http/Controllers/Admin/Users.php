@@ -44,21 +44,21 @@ class Users extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
+        $v = Validator::make( $request->all(), [
+            'name'     => 'required|between:2,100',
+            'email'    => 'required|email|unique:users|max:50',
+            'password' => 'required|string|min:6',
+            'confirm'  => 'required|string|min:6|same:password',
+        ]);
+
+        if( !$v->passes() )
+            return back()->withErrors( $v )->withInput();
+
         try
         {
-            $v = Validator::make( $request->all(), [
-                'name'     => 'required|between:2,100',
-                'email'    => 'required|email|unique:users|max:50',
-                'password' => 'required|string|min:6',
-                'confirm'  => 'required|string|min:6|same:password',
-            ]);
-
-            if( $v->passes() )
-                UsersRepository::insert( $request );
-            else
-                return back()->withErrors( $v )->withInput();
+            UsersRepository::insert( $request );
         }
         catch( Exception $e )
         {
