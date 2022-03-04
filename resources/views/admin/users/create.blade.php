@@ -34,14 +34,16 @@
             <div class="card elevation mb-4">
                 <div class="card-header"> New </div>
                 <div class="card-body">
-                    <form method="post" class="form-horizontal" enctype="multipart/form-data" >
+                    <form method="post" action="/admin/users" class="form-horizontal" enctype="multipart/form-data" >
 
+                        @method( 'POST' )
+                        @csrf
 
                         <div class="mb-3 row">
                             <label class="col-form-label col-md-2 text-md-end" for="name">Name</label>
                             <div class="col-md-10">
                                 <input type="text" id="name" class="form-control" placeholder="Name" name="name"
-                                    value="{{ ( isset( $post['name'] ) ? $post['name'] : '' ) }}" required >
+                                    value="{{ $post->nome ?? '' }}" required >
                             </div>
                         </div>
 
@@ -49,21 +51,21 @@
                             <label class="col-form-label col-md-2 text-md-end" for="email">E-mail</label>
                             <div class="col-md-10">
                                 <input type="text" id="email" class="form-control" placeholder="E-mail" name="email"
-                                    value="{{ ( isset( $post['email'] ) ? $post['email'] : '' ) }}" required >
+                                    value="{{ $post->email ?? '' }}" required >
                             </div>
                         </div>
 
                         <div class="mb-3 row">
                             <label class="col-form-label col-md-2 text-md-end" for="password">Password</label>
                             <div class="col-md-10">
-                                <input type="text" id="password" class="form-control" placeholder="Password" name="password" required >
+                                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required >
                             </div>
                         </div>
 
                         <div class="mb-3 row">
                             <label class="col-form-label col-md-2 text-md-end" for="confirm">Confirm Password</label>
                             <div class="col-md-10">
-                                <input type="text" id="confirm" class="form-control" placeholder="Confirm Password" name="confirm" required >
+                                <input type="password" id="confirm" class="form-control" placeholder="Confirm Password" name="confirm" required >
                             </div>
                         </div>
 

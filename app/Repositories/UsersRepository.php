@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Mail\ForgotPassword;
 use App\Interfaces\UsersRepositoryInterface;
-use App\Models\Users;
+use App\Models\User;
 
 class UsersRepository extends BaseRepository implements UsersRepositoryInterface
 {
@@ -45,6 +45,22 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
 
         return json_decode(auth()->user(), true);
     }
+
+
+
+    public function insert( $request )
+    {
+        $insert = User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return $insert;
+    }
+
+
+
 
 
 }

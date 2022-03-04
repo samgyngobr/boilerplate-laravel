@@ -22,6 +22,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                     <thead>
                         <tr>
                             <th>Id.</th>
@@ -30,6 +31,7 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+
                     <tfoot>
                         <tr>
                             <th>Id.</th>
@@ -38,6 +40,7 @@
                             <th>Actions</th>
                         </tr>
                     </tfoot>
+
                     <tbody>
 
                         @foreach ($users as $user)
@@ -55,6 +58,7 @@
                         @endforeach
 
                     </tbody>
+
                 </table>
             </div>
         </div>

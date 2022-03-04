@@ -30,7 +30,7 @@
                             <input type="email" class="form-control" id="email" value="{{Auth::user()->email}}" readonly >
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
 
                     </form>
                 </div>
@@ -65,7 +65,7 @@
                             <input type="password" class="form-control" id="confirm-pw" name="confirm-pw" >
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
 
                     </form>
                 </div>

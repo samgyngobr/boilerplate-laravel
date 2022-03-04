@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Validator;
 use App\Models\User;
+use App\Repositories\UsersRepository;
 
 class Users extends Controller
 {
@@ -32,8 +33,7 @@ class Users extends Controller
      */
     public function create()
     {
-        $post = [];
-        return view('admin/users/create', compact("post"));
+        return view('admin/users/create');
     }
 
 
@@ -44,9 +44,28 @@ class Users extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        try
+        {
+            $v = Validator::make( $request->all(), [
+                'name'     => 'required|between:2,100',
+                'email'    => 'required|email|unique:users|max:50',
+                'password' => 'required|string|min:6',
+                'confirm'  => 'required|string|min:6|same:password',
+            ]);
+
+            if( $v->passes() )
+                UsersRepository::insert( $request );
+            else
+                return back()->withErrors( $v )->withInput();
+        }
+        catch( Exception $e )
+        {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return back()->with('success', 'Data inserted successfully');
     }
 
 
