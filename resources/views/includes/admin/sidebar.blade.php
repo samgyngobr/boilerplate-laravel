@@ -26,7 +26,7 @@
         Scarlet
     </div>
 
-    <li class="nav-item {{ substr( Route::currentRouteName(), 0, 7 ) == 'config.' ? 'active' : '' }}">
+    <li class="nav-item {{ substr( Route::currentRouteName(), 0, 13 ) == 'admin.config.' ? 'active' : '' }}">
         <a class="nav-link" href="/admin/sk/config" >
             <i class="fas fa-fw fa-cog"></i>
             <span>Configuration</span>
@@ -34,7 +34,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Route::currentRouteName() == 'sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'active' : '' }} ">
+    <li class="nav-item {{ Route::currentRouteName() == 'admin.sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'active' : '' }} ">
 
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contentCollapsePages"
             aria-expanded="true" aria-controls="contentCollapsePages">
@@ -43,7 +43,7 @@
         </a>
 
         <div id="contentCollapsePages"
-            class="collapse {{ Route::currentRouteName() == 'sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'show' : '' }} "
+            class="collapse {{ Route::currentRouteName() == 'admin.sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'show' : '' }} "
             aria-labelledby="headingPages" data-parent="#accordionSidebar"
             >
 
