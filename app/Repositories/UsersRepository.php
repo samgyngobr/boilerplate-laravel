@@ -48,7 +48,7 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
 
 
 
-    public function insert( $request )
+    public function insert(Request $request )
     {
         $insert = User::create([
             'name'     => $request->name,

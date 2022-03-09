@@ -46,15 +46,15 @@ class Users extends Controller
      */
     public function store(Request $request)
     {
-        $v = Validator::make( $request->all(), [
+        $validator = Validator::make( $request->all(), [
             'name'     => 'required|between:2,100',
             'email'    => 'required|email|unique:users|max:50',
             'password' => 'required|string|min:6',
             'confirm'  => 'required|string|min:6|same:password',
         ]);
 
-        if( !$v->passes() )
-            return back()->withErrors( $v )->withInput();
+        if( $validator->fails() )
+            return back()->withInput()->withErrors($validator);
 
         try
         {

@@ -22,9 +22,11 @@
     @endif
 
 
-    @if ( session('error') )
+    @if ( session('errors') )
         <div class="alert alert-danger">
-            {{ session('error') }}
+            @foreach(session('errors')->getMessages() as $this_error)
+                <div>{{$this_error[0]}}</div>
+            @endforeach
         </div>
     @endif
 
@@ -32,18 +34,19 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="card elevation mb-4">
-                <div class="card-header"> New </div>
-                <div class="card-body">
-                    <form method="POST" action="/admin/users" class="form-horizontal" enctype="multipart/form-data" >
 
-                        @method( 'POST' )
+                <div class="card-header"> New </div>
+
+                <div class="card-body">
+                    <form method="post" action="/admin/users" class="form-horizontal" enctype="multipart/form-data" >
+
                         @csrf
 
                         <div class="mb-3 row">
                             <label class="col-form-label col-md-2 text-md-end" for="name">Name</label>
                             <div class="col-md-10">
                                 <input type="text" id="name" class="form-control" placeholder="Name" name="name"
-                                    value="{{ $post->nome ?? '' }}" required >
+                                    value="{{ old('name') }}" required >
                             </div>
                         </div>
 
@@ -51,7 +54,7 @@
                             <label class="col-form-label col-md-2 text-md-end" for="email">E-mail</label>
                             <div class="col-md-10">
                                 <input type="text" id="email" class="form-control" placeholder="E-mail" name="email"
-                                    value="{{ $post->email ?? '' }}" required >
+                                    value="{{ old('email') }}" required >
                             </div>
                         </div>
 
@@ -75,11 +78,12 @@
                             </div>
                         </div>
 
-
                     </form>
-                </div>
+                </div> <!-- / .card-body -->
+
             </div> <!-- / .card -->
         </div> <!-- / .col-md-8 -->
     </div> <!-- / .row -->
+
 
 @endsection
