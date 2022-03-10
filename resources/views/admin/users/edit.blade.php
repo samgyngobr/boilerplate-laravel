@@ -22,9 +22,11 @@
     @endif
 
 
-    @if ( session('error') )
+    @if ( session('errors') )
         <div class="alert alert-danger">
-            {{ session('error') }}
+            @foreach(session('errors')->getMessages() as $this_error)
+                <div>{{$this_error[0]}}</div>
+            @endforeach
         </div>
     @endif
 
@@ -40,9 +42,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="" >
+                    <form method="post" action="/admin/users/{{$user->id}}" >
 
                         @csrf
+                        @method( 'PUT' )
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>

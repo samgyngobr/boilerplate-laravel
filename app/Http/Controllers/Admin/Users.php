@@ -108,7 +108,23 @@ class Users extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make( $request->all(), [
+            'name' => 'required|between:2,100',
+        ]);
+
+        if( $validator->fails() )
+            return back()->withInput()->withErrors($validator);
+
+        try
+        {
+            UsersRepository::edit( $id, $request );
+        }
+        catch( Exception $e )
+        {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return back()->with('success', 'Data updated successfully');
     }
 
 

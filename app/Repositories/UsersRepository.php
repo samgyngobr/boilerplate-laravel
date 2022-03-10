@@ -60,7 +60,14 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
     }
 
 
+    public function edit( $id, $attributes )
+    {
+        $reg = User::where( 'id', $id )->firstOrFail();
+        $reg->name = $attributes->name;
+        $reg->save();
 
+        return $reg;
+    }
 
 
 }
