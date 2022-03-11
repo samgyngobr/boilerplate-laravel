@@ -6,6 +6,7 @@ return [
     'configuration'  => 'Configuration',
     'details'        => 'Details',
     'title'          => 'Title',
+    'label'          => 'Label',
     'gallery'        => 'Gallery',
     'no'             => 'No',
     'yes'            => 'Yes',

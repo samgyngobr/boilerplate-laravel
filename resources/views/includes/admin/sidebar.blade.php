@@ -34,7 +34,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Route::currentRouteName() == 'admin.sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'active' : '' }} ">
+    <li class="nav-item {{ substr( Route::currentRouteName(), 0, 14 ) == 'admin.sk-admin' ? 'active' : '' }} ">
 
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#contentCollapsePages"
             aria-expanded="true" aria-controls="contentCollapsePages">
@@ -43,7 +43,7 @@
         </a>
 
         <div id="contentCollapsePages"
-            class="collapse {{ Route::currentRouteName() == 'admin.sk-admin' || Route::currentRouteName() == 'sk-admin-new' ? 'show' : '' }} "
+            class="collapse {{ substr( Route::currentRouteName(), 0, 14 ) == 'admin.sk-admin' ? 'show' : '' }} "
             aria-labelledby="headingPages" data-parent="#accordionSidebar"
             >
 

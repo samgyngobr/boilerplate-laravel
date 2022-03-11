@@ -21,7 +21,7 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/admin/sk/{url}/delete/{id}' , 'Samgyngobr\Scarlet\Controllers\AdminController@delete' );
 
     Route::get( '/admin/sk/{url}/gallery/{id}/delete/{did}' , 'Samgyngobr\Scarlet\Controllers\GalleryController@delete' );
-    Route::get( '/admin/sk/{url}/gallery/{id}'              , 'Samgyngobr\Scarlet\Controllers\GalleryController@index' );
+    Route::get( '/admin/sk/{url}/gallery/{id}'              , 'Samgyngobr\Scarlet\Controllers\GalleryController@index' )->name('sk-admin-gallery');
     Route::post('/admin/sk/{url}/gallery/{id}'              , 'Samgyngobr\Scarlet\Controllers\GalleryController@new' );
 
 });

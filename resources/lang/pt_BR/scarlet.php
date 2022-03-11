@@ -6,6 +6,7 @@ return [
     'configuration'  => 'Configuração',
     'details'        => 'Detalhes',
     'title'          => 'Título',
+    'label'          => 'Campo',
     'gallery'        => 'Galeria',
     'no'             => 'Não',
     'yes'            => 'Sim',

@@ -64,7 +64,7 @@ function formGen( $fields, $action )
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
                     <div class="col-md-10">
-                        <select id="' . $value['name'] . '" class="form-select" name="' . $value['name'] . '" ' . $required . ' >
+                        <select id="' . $value['name'] . '" class="form-select form-control" name="' . $value['name'] . '" ' . $required . ' >
                             <option value="">' . __('scarlet.select') . '</option>
                             ';
 
