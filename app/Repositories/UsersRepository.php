@@ -82,6 +82,7 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
     }
 
 
+
     public function destroy( $id )
     {
         $reg = User::where( 'id', $id )->firstOrFail();

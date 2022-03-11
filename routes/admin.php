@@ -11,7 +11,9 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
 
     Route::get( '/' , 'Index@index' );
 
-    Route::resource( '/profile' , 'Profile' );
+    Route::get( '/profile'          , 'Profile@index'          );
+    Route::put( '/profile'          , 'Profile@update'         );
+    Route::put( '/profile/password' , 'Profile@changePassword' );
 
     Route::resource( '/users'                      , 'Users'                );
     Route::get(      '/users/{id}/delete'          , 'Users@destroy'        );

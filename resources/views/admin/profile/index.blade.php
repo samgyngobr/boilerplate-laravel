@@ -3,7 +3,30 @@
 
 @section('content')
 
+
     <h1 class="h3 mb-2 text-gray-800">Profile</h1>
+
+
+    @if ( session('success') )
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if ( session('error') )
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if ( session('errors') )
+        <div class="alert alert-danger">
+            @foreach(session('errors')->getMessages() as $this_error)
+                <div>{{$this_error[0]}}</div>
+            @endforeach
+        </div>
+    @endif
+
 
     <!-- Content Row -->
     <div class="row">
@@ -16,9 +39,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="" >
+                    <form method="post" action="/admin/profile" >
 
                         @csrf
+                        @method( 'PUT' )
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
@@ -46,9 +70,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="" >
+                    <form method="post" action="/admin/profile/password" >
 
                         @csrf
+                        @method( 'PUT' )
 
                         <div class="mb-3">
                             <label for="old-pw" class="form-label">Old Password</label>
