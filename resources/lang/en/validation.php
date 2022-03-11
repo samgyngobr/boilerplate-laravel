@@ -157,6 +157,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'old-pw'     => 'old password',
+        'new-pw'     => 'new password',
+        'confirm-pw' => 'password confirmation',
+    ],
 
 ];

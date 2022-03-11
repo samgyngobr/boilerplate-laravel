@@ -17,6 +17,22 @@
     </div>
 
 
+    @if ( session('success') )
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    @if ( session('errors') )
+        <div class="alert alert-danger">
+            @foreach(session('errors')->getMessages() as $this_error)
+                <div>{{$this_error[0]}}</div>
+            @endforeach
+        </div>
+    @endif
+
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">

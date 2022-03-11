@@ -129,6 +129,30 @@ class Users extends Controller
 
 
 
+    public function changePassword( Request $request, $id )
+    {
+        $validator = Validator::make( $request->all(), [
+            'new-pw'     => 'required|string|min:6',
+            'confirm-pw' => 'required|string|min:6|same:new-pw',
+        ]);
+
+        if( $validator->fails() )
+            return back()->withInput()->withErrors($validator);
+
+        try
+        {
+            UsersRepository::password( $id, $request->all() );
+        }
+        catch( Exception $e )
+        {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return back()->with('success', 'Password updated successfully');
+    }
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -137,7 +161,9 @@ class Users extends Controller
      */
     public function destroy($id)
     {
-        //
+        UsersRepository::destroy( $id );
+
+        return back()->with('success', 'Data deleted successfully');
     }
 
 

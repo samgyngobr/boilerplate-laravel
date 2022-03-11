@@ -12,6 +12,9 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::get( '/' , 'Index@index' );
 
     Route::resource( '/profile' , 'Profile' );
-    Route::resource( '/users'   , 'Users'   );
+
+    Route::resource( '/users'                      , 'Users'                );
+    Route::get(      '/users/{id}/delete'          , 'Users@destroy'        );
+    Route::put(      '/users/{id}/change-password' , 'Users@changePassword' );
 
 });

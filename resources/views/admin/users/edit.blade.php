@@ -73,14 +73,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="post" action="" >
+                    <form method="post" action="/admin/users/{{$user->id}}/change-password" >
 
                         @csrf
-
-                        <div class="mb-3">
-                            <label for="old-pw" class="form-label">Old Password</label>
-                            <input type="password" class="form-control" id="old-pw" name="old-pw" >
-                        </div>
+                        @method( 'PUT' )
 
                         <div class="mb-3">
                             <label for="new-pw" class="form-label">New Password</label>

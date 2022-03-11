@@ -60,6 +60,7 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
     }
 
 
+
     public function edit( $id, $attributes )
     {
         $reg = User::where( 'id', $id )->firstOrFail();
@@ -67,6 +68,24 @@ class UsersRepository extends BaseRepository implements UsersRepositoryInterface
         $reg->save();
 
         return $reg;
+    }
+
+
+
+    public function password( $id, $attributes )
+    {
+        $reg = User::where( 'id', $id )->firstOrFail();
+        $reg->password = bcrypt( $attributes['new-pw'] );
+        $reg->save();
+
+        return $reg;
+    }
+
+
+    public function destroy( $id )
+    {
+        $reg = User::where( 'id', $id )->firstOrFail();
+        $reg->delete();
     }
 
 
