@@ -100,7 +100,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website <?= date('Y') ?></span>
+                        <span>Copyright &copy; {{ config('app.name') }} {{ date('Y') }} </span>
                     </div>
                 </div>
             </footer>
@@ -148,6 +148,22 @@
     <script src="/sb-admin/js/demo/datatables-demo.js"></script>
 
     @endif
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+    <script>
+        if( document.querySelector('.ckeditor') )
+        {
+            ClassicEditor
+                .create( document.querySelector( '.ckeditor' ) )
+                .then( editor => {
+                    //console.log( editor );
+                }
+            )
+            .catch( error => {
+                console.error( error );
+            } );
+        }
+    </script>
 
 </body>
 
