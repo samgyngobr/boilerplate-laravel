@@ -71,8 +71,8 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>
-                                <a class="text-info"   href="/admin/users/{{$user->id}}/edit"   ><i class="fas fa-fw fa-edit"  ></i></a>
-                                <a class="text-danger" href="/admin/users/{{$user->id}}/delete" ><i class="fas fa-fw fa-trash" ></i></a>
+                                <a class="text-info"          href="/admin/users/{{$user->id}}/edit"   ><i class="fas fa-fw fa-edit"  ></i></a>
+                                <a class="text-danger delete" href="/admin/users/{{$user->id}}/delete" ><i class="fas fa-fw fa-trash" ></i></a>
                             </td>
                         </tr>
 
