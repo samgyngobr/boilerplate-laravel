@@ -136,7 +136,9 @@
 
                     <div class="modal-header">
                         <h4 class="modal-title" id="n">{{ __('scarlet.fields') }}</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true" aria-label="Close" ></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="Close" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
 
                     <div class="modal-body">
@@ -217,7 +219,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">{{ __('scarlet.close') }}</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{ __('scarlet.close') }}</button>
                         <button type="submit" class="btn btn-success" name="op" value="new"  >{{ __('scarlet.save')  }}</button>
                     </div>
 
