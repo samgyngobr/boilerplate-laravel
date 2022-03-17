@@ -523,4 +523,23 @@ class Scarlet extends Model
     /////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////
 
+
+    public function saveUpload( $post )
+    {
+        $ext  = explode( '.', $post->getClientOriginalName() );
+        $file = uniqid() . '.' . $ext[ count( $ext )-1 ];
+        $aux  = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
+        $res  = $post->storeAs( './' . $aux, $file );
+
+        return [
+            'file' => $file,
+            'path' => $aux . '/'
+        ];
+    }
+
+
+
+    /////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
 }

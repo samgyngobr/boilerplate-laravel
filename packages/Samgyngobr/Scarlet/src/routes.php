@@ -6,6 +6,8 @@ Route::middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/admin/sk/config/enable/{url}'  , 'Samgyngobr\Scarlet\Controllers\ConfigController@enable' );
     Route::get('/admin/sk/config/disable/{url}' , 'Samgyngobr\Scarlet\Controllers\ConfigController@disable');
 
+    Route::post('/admin/sk/upload-image' , 'Samgyngobr\Scarlet\Controllers\AdminController@uploadImage' );
+
     Route::get( '/admin/sk/{url}' , 'Samgyngobr\Scarlet\Controllers\AdminController@index'        )->name('sk-admin');
     Route::post('/admin/sk/{url}' , 'Samgyngobr\Scarlet\Controllers\AdminController@updateUnique' )->name('sk-admin');
 

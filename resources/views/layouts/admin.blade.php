@@ -127,6 +127,8 @@
     <!-- Custom scripts for all pages-->
     <script src="/sb-admin/js/sb-admin-2.min.js"></script>
 
+    <script src="/sb-admin/js/img-upload.js"></script>
+
     @if ( isset( $includes ) && in_array( 'chart', $includes ) )
 
     <!-- Page level plugins -->

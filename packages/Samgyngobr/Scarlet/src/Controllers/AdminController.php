@@ -166,4 +166,28 @@ class AdminController extends Controller
 
     /////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+
+    public function uploadImage( Request $request )
+    {
+        try
+        {
+            $req = $request->all();
+            $res = ( new Scarlet( ) )->saveUpload( $req['file'] );
+
+            return response()->json([
+                'success' => true,
+                'message' => $res
+            ], 201);
+        }
+        catch( Exception $e )
+        {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 422);
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
 }

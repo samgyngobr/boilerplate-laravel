@@ -11,7 +11,7 @@ function formGen( $fields, $action )
         switch ( $value['type'] )
         {
 
-            case '1':
+            case '1': // text
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -23,7 +23,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '2':
+            case '2': // integer
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -35,7 +35,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '3':
+            case '3': // double
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -47,7 +47,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '4':
+            case '4': // textarea
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -59,7 +59,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '5':
+            case '5': // select
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -79,7 +79,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '6':
+            case '6': // radio
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -101,7 +101,7 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '7':
+            case '7': // checkbox
                 $str .= '
                 <div class="mb-3 row">
                     <label class="col-form-label col-md-2 text-md-end" for="' . $value['name'] . '">' . $value['label'] . '</label>
@@ -123,26 +123,28 @@ function formGen( $fields, $action )
                 break;
 
 
-            case '8':
+            case '8': // image
                 if( !isset( $value['value'] ) )
                     $btn = '<div class="input-group">
-                                <input type="file" class="form-control" name="' . $value['name'] . '" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
+                                <input type="file" class="form-control img-upload" data-url="/admin/sk/upload-image" data-target="target_' . $value['name'] . '" data-loading="loading_' . $value['name'] . '" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
                             </div>';
                 else
                     $btn = '<div class="input-group">
-                                <input type="file" class="form-control" name="' . $value['name'] . '" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
+                                <input type="file" class="form-control img-upload" data-target="" data-loading="" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
                                 <a class="btn btn-outline-secondary" href="' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
                             </div>';
                 $str .= '
                     <div class="mb-3 row">
                         <label class="col-form-label col-md-2 text-md-end" >' . $value['label'] . '</label>
+                        <input type="hidden" name="' . $value['name'] . '" id="target_' . $value['name'] . '"  >
+                        <div id="loading_' . $value['name'] . '" ></div>
                         <div class="col-md-10">' . $btn . '</div>
                     </div>
                     ';
                 break;
 
 
-            case '9':
+            case '9': // upload
                 if( !isset( $value['value'] ) )
                     $btn = '<div class="input-group">
                                 <div class="custom-file">
