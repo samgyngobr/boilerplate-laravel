@@ -127,6 +127,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/sb-admin/js/sb-admin-2.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.min.js" integrity="sha512-IlZV3863HqEgMeFLVllRjbNOoh8uVj0kgx0aYxgt4rdBABTZCl/h5MfshHD9BrnVs6Rs9yNN7kUQpzhcLkNmHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/sb-admin/js/img-upload.js"></script>
 
     @if ( isset( $includes ) && in_array( 'chart', $includes ) )

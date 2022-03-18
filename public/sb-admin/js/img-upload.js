@@ -1,6 +1,8 @@
 
 "use strict";
 
+// https://github.com/fengyuanchen/cropperjs/blob/main/README.md
+
 var AjaxFileUploader = function( target, loading ) {
 
     this._file = null;
@@ -16,6 +18,7 @@ var AjaxFileUploader = function( target, loading ) {
 
         xhr.onload = function (e) {
             console.log( 'onload', e );
+            $('#modal-crop').modal();
         };
 
         xhr.onerror = function (e) {

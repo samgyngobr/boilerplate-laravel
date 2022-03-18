@@ -533,7 +533,7 @@ class Scarlet extends Model
 
         return [
             'file' => $file,
-            'path' => $aux . '/'
+            'path' => '/' . $aux . '/'
         ];
     }
 
