@@ -529,11 +529,13 @@ class Scarlet extends Model
         $ext  = explode( '.', $post->getClientOriginalName() );
         $file = uniqid() . '.' . $ext[ count( $ext )-1 ];
         $aux  = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
-        $res  = $post->storeAs( './' . $aux, $file );
+        $res  = $post->storeAs( 'public/' . $aux, $file );
+
+        asset('public/' . $aux . '/' . $file);
 
         return [
             'file' => $file,
-            'path' => '/' . $aux . '/'
+            'path' => '/storage/' . $aux . '/'
         ];
     }
 

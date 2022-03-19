@@ -137,8 +137,10 @@ function formGen( $fields, $action )
                     <div class="mb-3 row">
                         <label class="col-form-label col-md-2 text-md-end" >' . $value['label'] . '</label>
                         <input type="hidden" name="' . $value['name'] . '" id="target_' . $value['name'] . '"  >
-                        <div id="loading_' . $value['name'] . '" ></div>
-                        <div class="col-md-10">' . $btn . '</div>
+                        <div class="col-md-10">
+                            ' . $btn . '
+                            <div class="d-none" id="loading_' . $value['name'] . '" >Loading...</div>
+                        </div>
                     </div>
                     ';
                 break;
@@ -185,6 +187,9 @@ function formGen( $fields, $action )
     $str .= '</form>';
 
     $str .= '
+
+        <style> img { max-width: 100%; } </style>
+
         <div class="modal fade" id="modal-crop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -197,7 +202,17 @@ function formGen( $fields, $action )
                     </div>
 
                     <div class="modal-body">
-                        ...
+
+                        <div class="img-container">
+                            <img src="" id="thumbnail" alt="" />
+                        </div>
+
+                        <input type="hidden" name="img" value=""     id="file" />
+                        <input type="hidden" name="x"   value="0"    id="x" />
+                        <input type="hidden" name="y"   value="0"    id="y" />
+                        <input type="hidden" name="w"   value="1920" id="w" />
+                        <input type="hidden" name="h"   value="925"  id="h" />
+
                     </div>
 
                     <div class="modal-footer">

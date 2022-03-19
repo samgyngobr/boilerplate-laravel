@@ -12,13 +12,25 @@ var AjaxFileUploader = function( target, loading ) {
 
         var xhr = new XMLHttpRequest();
 
+        //xhr.onreadystatechange = function() {
+        //    console.log( xhr.readyState );
+        //}
+
         xhr.onprogress = function (e) {
-            console.log( 'onprogress', e );
+            $('#' + loading).removeClass('d-none');
         };
 
         xhr.onload = function (e) {
-            console.log( 'onload', e );
+
+            $('#' + loading).addClass('d-none');
             $('#modal-crop').modal();
+
+            var jsonResponse = JSON.parse(xhr.responseText);
+
+            if( jsonResponse.success == true )
+                loadCropper( jsonResponse.message )
+            else
+                console.log('error')
         };
 
         xhr.onerror = function (e) {
@@ -67,5 +79,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     }, false );
 
+
 });
 
+
+function loadCropper( data )
+{
+    $('#thumbnail').attr("src", data.path + data.file);
+    $('#file').attr("src", data.file);
+
+    var Cropper   = window.Cropper;
+    var container = document.querySelector('.img-container');
+    var image = container.getElementsByTagName('img').item(0);
+
+    var cropper = new Cropper( image, {
+        aspectRatio  : 2.0756756756757,
+        zoomable     : false,
+        rotatable    : false,
+        scalable     : false,
+        viewMode     : 1,
+        crop         : function(e) {
+            $('#x').val( e.x );
+            $('#y').val( e.y );
+            $('#w').val( e.width );
+            $('#h').val( e.height );
+        }
+    });
+}
