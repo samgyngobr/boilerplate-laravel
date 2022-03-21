@@ -115,13 +115,21 @@ class Scarlet extends Model
         foreach ( $fields as $key => $value )
         {
             $j = [
-                [ 'name' => 'field'    , 'value' => $value->label    ],
-                [ 'name' => 'required' , 'value' => $value->required ],
-                [ 'name' => 'index'    , 'value' => $value->index    ],
-                [ 'name' => 'order'    , 'value' => $value->order    ],
-                [ 'name' => 'type'     , 'value' => $value->type     ],
-                [ 'name' => 'name'     , 'value' => $value->name     ],
+                [ 'name' => 'field'      , 'value' => $value->label    ],
+                [ 'name' => 'required'   , 'value' => $value->required ],
+                [ 'name' => 'index'      , 'value' => $value->index    ],
+                [ 'name' => 'order'      , 'value' => $value->order    ],
+                [ 'name' => 'type'       , 'value' => $value->type     ],
+                [ 'name' => 'name'       , 'value' => $value->name     ],
             ];
+
+            if( $value->type == 8 )
+            {
+                $aux = json_decode( $value->additional, true );
+
+                $j[] = [ 'name' => 'image_width' , 'value' => $aux['image_width'] ];
+                $j[] = [ 'name' => 'image_height', 'value' => $aux['image_height'] ];
+            }
 
             if( isset($value->options) )
                 foreach ($value->options as $k => $v)

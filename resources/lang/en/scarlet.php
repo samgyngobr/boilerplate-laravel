@@ -28,6 +28,8 @@ return [
     'radio'          => 'Radio',
     'checkbox'       => 'Checkbox',
     'image'          => 'Image',
+    'image_width'    => 'Width',
+    'image_height'   => 'Height',
     'upload'         => 'Upload',
     'save'           => 'Save',
     'value'          => 'Value',

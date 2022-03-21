@@ -25,7 +25,7 @@ var AjaxFileUploader = function( target, loading ) {
             $('#' + loading).addClass('d-none');
             $('#modal-crop').modal();
 
-            var jsonResponse = JSON.parse(xhr.responseText);
+            var jsonResponse = JSON.parse( xhr.responseText );
 
             if( jsonResponse.success == true )
                 loadCropper( jsonResponse.message )
@@ -57,40 +57,47 @@ AjaxFileUploader.IsAsyncFileUploadSupported = function () {
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    document.querySelector(".img-upload").addEventListener( 'change', function( e ) {
+    var qs = document.querySelector(".img-upload") !== null ;
 
-        if( this.files.length > 0 )
-        {
-            var target           = this.getAttribute('data-target');
-            var loading          = this.getAttribute('data-loading');
-            var url              = this.getAttribute('data-url');
-            var ajaxFileUploader = new AjaxFileUploader( target, loading );
+    if( qs )
+    {
+        document.querySelector(".img-upload").addEventListener( 'change', function( e ) {
 
-            if ( AjaxFileUploader.IsAsyncFileUploadSupported )
+            if( this.files.length > 0 )
             {
-                ajaxFileUploader.uploadFile( url, this.files[0]);
-            }
-            else
-            {
-                console.log( "Can't upload files" );
-            }
+                var target  = this.getAttribute('data-target');
+                var loading = this.getAttribute('data-loading');
+                var url     = this.getAttribute('data-url');
 
-        } // if( this.files[0] )
+                document.getElementById('w').value = this.getAttribute('data-width');
+                document.getElementById('h').value = this.getAttribute('data-height');
 
-    }, false );
+                var ajaxFileUploader = new AjaxFileUploader( target, loading );
 
+                if ( AjaxFileUploader.IsAsyncFileUploadSupported )
+                {
+                    ajaxFileUploader.uploadFile( url, this.files[0]);
+                }
+                else
+                {
+                    console.log( "Can't upload files" );
+                }
 
+            } // if( this.files[0] )
+
+        }, false );
+    }
 });
 
 
 function loadCropper( data )
 {
     $('#thumbnail').attr("src", data.path + data.file);
-    $('#file').attr("src", data.file);
+    $('#file').attr("value", data.file);
 
     var Cropper   = window.Cropper;
     var container = document.querySelector('.img-container');
-    var image = container.getElementsByTagName('img').item(0);
+    var image     = container.getElementsByTagName('img').item(0);
 
     var cropper = new Cropper( image, {
         aspectRatio  : 2.0756756756757,
@@ -101,8 +108,8 @@ function loadCropper( data )
         crop         : function(e) {
             $('#x').val( e.x );
             $('#y').val( e.y );
-            $('#w').val( e.width );
-            $('#h').val( e.height );
+            //$('#w').val( e.width );
+            //$('#h').val( e.height );
         }
     });
 }

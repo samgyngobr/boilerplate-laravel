@@ -87,7 +87,7 @@ class ScarletArea extends Model
             $areaId = ScarletArea::create([
                 'name'     => $url,
                 'label'    => $post->name,
-                'multiple' => $post->multiple,
+                'multiple' => ( $post->multiple ) ? $post->multiple : 0,
                 'gallery'  => $post->gallery,
                 'area_id'  => ( $post->area != '' ) ? $post->area : null,
                 'url'      => $url
@@ -101,9 +101,18 @@ class ScarletArea extends Model
             foreach ($fields as $key => $value)
             {
                 $ar = [];
+                $additional = null;
 
                 foreach ($value as $k => $v)
                     $ar[ $v['name'] ] = $v['value'];
+
+                if( $ar['type'] == 8 )
+                {
+                    $additional = json_encode([
+                        'image_width'  => $ar['image_width'],
+                        'image_height' => $ar['image_height'],
+                    ]);
+                }
 
                 $fieldId = ScarletField::create([
                     'id_sk_version' => $versionId->id,
@@ -113,6 +122,7 @@ class ScarletArea extends Model
                     'required'      => $ar['required'],
                     'order'         => ( $ar['order'] ) ? $ar['order']: 0,
                     'index'         => $ar['index'],
+                    'additional'    => $additional,
                 ]);
 
                 foreach ($ar as $ke => $va)
@@ -174,9 +184,18 @@ class ScarletArea extends Model
             foreach ($fields as $key => $value)
             {
                 $ar = [];
+                $additional = null;
 
                 foreach ($value as $k => $v)
                     $ar[ $v['name'] ] = $v['value'];
+
+                if( $ar['type'] == 8 )
+                {
+                    $additional = json_encode([
+                        'image_width'  => $ar['image_width'],
+                        'image_height' => $ar['image_height'],
+                    ]);
+                }
 
                 $fieldId = ScarletField::create([
                     'id_sk_version' => $versionId->id,
@@ -186,6 +205,7 @@ class ScarletArea extends Model
                     'required'      => $ar['required'],
                     'order'         => ( $ar['order'] ) ? $ar['order']: 0,
                     'index'         => $ar['index'],
+                    'additional'    => $additional
                 ]);
 
                 foreach ($ar as $ke => $va)

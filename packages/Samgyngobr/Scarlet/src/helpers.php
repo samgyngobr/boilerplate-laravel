@@ -6,7 +6,8 @@ function formGen( $fields, $action )
 
     foreach ($fields as $key => $value)
     {
-        $required = ( $value['required'] ) ? 'required' : '';
+        $required   = ( $value['required'] ) ? 'required' : '';
+        $additional = $value['additional'] != '' ? json_decode( $value['additional'], true ) : [];
 
         switch ( $value['type'] )
         {
@@ -126,7 +127,14 @@ function formGen( $fields, $action )
             case '8': // image
                 if( !isset( $value['value'] ) )
                     $btn = '<div class="input-group">
-                                <input type="file" class="form-control img-upload" data-url="/admin/sk/upload-image" data-target="target_' . $value['name'] . '" data-loading="loading_' . $value['name'] . '" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
+                                <input type="file" class="form-control img-upload"
+                                    id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . '
+                                    data-url="/admin/sk/upload-image"
+                                    data-height="' . $additional['image_height'] . '"
+                                    data-width="' . $additional['image_width'] . '"
+                                    data-target="target_' . $value['name'] . '"
+                                    data-loading="loading_' . $value['name'] . '"
+                                    >
                             </div>';
                 else
                     $btn = '<div class="input-group">
@@ -207,11 +215,11 @@ function formGen( $fields, $action )
                             <img src="" id="thumbnail" alt="" />
                         </div>
 
-                        <input type="hidden" name="img" value=""     id="file" />
-                        <input type="hidden" name="x"   value="0"    id="x" />
-                        <input type="hidden" name="y"   value="0"    id="y" />
-                        <input type="hidden" name="w"   value="1920" id="w" />
-                        <input type="hidden" name="h"   value="925"  id="h" />
+                        <input type="hidden" name="img" value="" id="file" />
+                        <input type="hidden" name="x"   value="" id="x"    />
+                        <input type="hidden" name="y"   value="" id="y"    />
+                        <input type="hidden" name="w"   value="" id="w"    />
+                        <input type="hidden" name="h"   value="" id="h"    />
 
                     </div>
 

@@ -28,6 +28,8 @@ return [
     'radio'          => 'Radio',
     'checkbox'       => 'Checkbox',
     'image'          => 'Imagem',
+    'image_width'    => 'Largura',
+    'image_height'   => 'Altura',
     'upload'         => 'Upload',
     'save'           => 'Salve',
     'value'          => 'Valor',

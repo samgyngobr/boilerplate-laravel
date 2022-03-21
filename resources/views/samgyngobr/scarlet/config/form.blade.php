@@ -214,6 +214,20 @@
 
                         <div id='input_fields_wrap'></div>
 
+                        <div class="mb-3 row d-none" id="image_width_field">
+                            <label class="col-form-label col-md-2 text-start text-md-end" for="image_width">{{ __('scarlet.image_width') }}</label>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" placeholder="{{ __('scarlet.image_width') }}" id="image_width" name="image_width" >
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row d-none" id="image_height_field">
+                            <label class="col-form-label col-md-2 text-start text-md-end" for="image_height">{{ __('scarlet.image_height') }}</label>
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" placeholder="{{ __('scarlet.image_height') }}" id="image_height" name="image_height" >
+                            </div>
+                        </div>
+
                         <input type="hidden" class="form-control" placeholder="" id="namef" name="name" >
 
                     </div>
@@ -254,21 +268,24 @@
                 var currentVal = JSON.parse( document.getElementById('jsonField').value );
                 var item       = currentVal.splice(id, 1);
                 var myModal    = new bootstrap.Modal(document.getElementById("new"), {});
+
                 myModal.show();
 
-                document.getElementById('required0').setAttribute( 'checked', false );
-                document.getElementById('required1').setAttribute( 'checked', false );
-                document.getElementById('index0'   ).setAttribute( 'checked', false );
-                document.getElementById('index1'   ).setAttribute( 'checked', false );
+                document.getElementById( 'required0' ).setAttribute( 'checked', false );
+                document.getElementById( 'required1' ).setAttribute( 'checked', false );
+                document.getElementById( 'index0'    ).setAttribute( 'checked', false );
+                document.getElementById( 'index1'    ).setAttribute( 'checked', false );
 
-                document.getElementById('field').value = item[0][0]['value'];
-                document.getElementById('order').value = item[0][3]['value'];
-                document.getElementById('type' ).value = item[0][4]['value'];
-                document.getElementById('namef').value = item[0][5]['value'];
-                document.getElementById('new'       ).setAttribute( 'data-id', id    );
-                document.getElementById('fieldsForm').setAttribute( 'data-op', "edt" );
-                document.querySelector('input.required[value="' + item[0][1]['value'] + '"]').setAttribute( 'checked', 'checked' );
-                document.querySelector('input.index[value="'    + item[0][2]['value'] + '"]').setAttribute( 'checked', 'checked' );
+                document.getElementById( 'field' ).value = item[0][0]['value'];
+                document.getElementById( 'order' ).value = item[0][3]['value'];
+                document.getElementById( 'type'  ).value = item[0][4]['value'];
+                document.getElementById( 'namef' ).value = item[0][5]['value'];
+
+                document.getElementById( 'new'        ).setAttribute( 'data-id', id    );
+                document.getElementById( 'fieldsForm' ).setAttribute( 'data-op', "edt" );
+
+                document.querySelector( 'input.required[value="' + item[0][1]['value'] + '"]' ).setAttribute( 'checked', 'checked' );
+                document.querySelector( 'input.index[value="'    + item[0][2]['value'] + '"]' ).setAttribute( 'checked', 'checked' );
 
 
                 if( item[0][4]['value'] == 5 || item[0][4]['value'] == 6 || item[0][4]['value'] == 7 )
@@ -276,8 +293,22 @@
                 else
                     document.getElementById('add_options_button').classList.add('d-none');
 
+                if( item[0][4]['value'] == 8 )
+                {
+                    document.getElementById( 'image_width'  ).value = item[0][6]['value'];
+                    document.getElementById( 'image_height' ).value = item[0][7]['value'];
 
-                item[0].forEach(function(value, key){
+                    document.getElementById('image_width_field' ).classList.remove('d-none');
+                    document.getElementById('image_height_field').classList.remove('d-none');
+                }
+                else
+                {
+                    document.getElementById('image_width_field' ).classList.add('d-none');
+                    document.getElementById('image_height_field').classList.add('d-none');
+                }
+
+
+                item[0].forEach( function( value, key ){
 
                     var posA = strpos( value.name, 'label[' );
                     var posB = strpos( value.name, ']' );
@@ -377,6 +408,18 @@
                     document.getElementById('add_options_button').classList.add('d-none');
                     document.getElementById('input_fields_wrap').innerHTML = "";
                 }
+
+                if( val == 8 )
+                {
+                    document.getElementById('image_width_field' ).classList.remove('d-none');
+                    document.getElementById('image_height_field').classList.remove('d-none');
+                }
+                else
+                {
+                    document.getElementById('image_width_field' ).classList.add('d-none');
+                    document.getElementById('image_height_field').classList.add('d-none');
+                }
+
             });
 
 
@@ -524,6 +567,8 @@
             document.getElementById("fieldsForm").reset();
             document.getElementById("input_fields_wrap").innerHTML = null;
             document.getElementById("add_options_button").classList.add('d-none');
+            document.getElementById("image_width_field").classList.add('d-none');
+            document.getElementById("image_height_field").classList.add('d-none');
             document.getElementById("fieldsForm").setAttribute("data-op", 'add');
             document.querySelector('input.required[value="0"]').setAttribute("checked", "checked");
             document.querySelector('input.index[value="0"]').setAttribute("checked", "checked");
