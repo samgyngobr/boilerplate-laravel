@@ -3,7 +3,7 @@
 
 // https://github.com/fengyuanchen/cropperjs/blob/main/README.md
 
-var AjaxFileUploader = function( target, loading ) {
+var AjaxFileUploader = function( target, loading, width, height ) {
 
     this._file = null;
     var self = this;
@@ -17,18 +17,18 @@ var AjaxFileUploader = function( target, loading ) {
         //}
 
         xhr.onprogress = function (e) {
-            $('#' + loading).removeClass('d-none');
+            $(loading).removeClass('d-none');
         };
 
         xhr.onload = function (e) {
 
-            $('#' + loading).addClass('d-none');
+            $(loading).addClass('d-none');
             $('#modal-crop').modal();
 
             var jsonResponse = JSON.parse( xhr.responseText );
 
             if( jsonResponse.success == true )
-                loadCropper( jsonResponse.message )
+                loadCropper( jsonResponse.message, width, height, target )
             else
                 console.log('error')
         };
@@ -68,11 +68,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 var target  = this.getAttribute('data-target');
                 var loading = this.getAttribute('data-loading');
                 var url     = this.getAttribute('data-url');
+                var width   = this.getAttribute('data-width');
+                var height  = this.getAttribute('data-height');
 
-                document.getElementById('w').value = this.getAttribute('data-width');
-                document.getElementById('h').value = this.getAttribute('data-height');
-
-                var ajaxFileUploader = new AjaxFileUploader( target, loading );
+                var ajaxFileUploader = new AjaxFileUploader( target, loading, width, height );
 
                 if ( AjaxFileUploader.IsAsyncFileUploadSupported )
                 {
@@ -90,26 +89,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
-function loadCropper( data )
+function loadCropper( data, width, height, target )
 {
     $('#thumbnail').attr("src", data.path + data.file);
-    $('#file').attr("value", data.file);
 
     var Cropper   = window.Cropper;
     var container = document.querySelector('.img-container');
     var image     = container.getElementsByTagName('img').item(0);
 
     var cropper = new Cropper( image, {
-        aspectRatio  : 2.0756756756757,
+        aspectRatio  : width/height,
         zoomable     : false,
         rotatable    : false,
         scalable     : false,
         viewMode     : 1,
         crop         : function(e) {
-            $('#x').val( e.x );
-            $('#y').val( e.y );
-            //$('#w').val( e.width );
-            //$('#h').val( e.height );
+
+            console.log(e);
+
+            $( target ).val( JSON.stringify({
+                'file'  : data.file,
+                'crop'  : e.detail,
+                'width' : width,
+                'height': height,
+            }) );
+
         }
     });
 }

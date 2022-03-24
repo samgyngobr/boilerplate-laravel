@@ -127,24 +127,33 @@ function formGen( $fields, $action )
             case '8': // image
                 if( !isset( $value['value'] ) )
                     $btn = '<div class="input-group">
-                                <input type="file" class="form-control img-upload"
+                                <input type="file"
+                                    class="form-control img-upload"
                                     id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . '
                                     data-url="/admin/sk/upload-image"
                                     data-height="' . $additional['image_height'] . '"
                                     data-width="' . $additional['image_width'] . '"
-                                    data-target="target_' . $value['name'] . '"
-                                    data-loading="loading_' . $value['name'] . '"
+                                    data-target="#target_' . $value['name'] . '"
+                                    data-loading="#loading_' . $value['name'] . '"
                                     >
                             </div>';
                 else
                     $btn = '<div class="input-group">
-                                <input type="file" class="form-control img-upload" data-target="" data-loading="" id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . ' >
+                                <input type="file"
+                                    class="form-control img-upload"
+                                    id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . '
+                                    data-url="/admin/sk/upload-image"
+                                    data-height="' . $additional['image_height'] . '"
+                                    data-width="' . $additional['image_width'] . '"
+                                    data-target="#target_' . $value['name'] . '"
+                                    data-loading="#loading_' . $value['name'] . '"
+                                    >
                                 <a class="btn btn-outline-secondary" href="' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
                             </div>';
                 $str .= '
                     <div class="mb-3 row">
                         <label class="col-form-label col-md-2 text-md-end" >' . $value['label'] . '</label>
-                        <input type="hidden" name="' . $value['name'] . '" id="target_' . $value['name'] . '"  >
+                        <input type="hidden" name="' . $value['name'] . '" id="target_' . $value['name'] . '" value=""  >
                         <div class="col-md-10">
                             ' . $btn . '
                             <div class="d-none" id="loading_' . $value['name'] . '" >Loading...</div>
@@ -198,34 +207,27 @@ function formGen( $fields, $action )
 
         <style> img { max-width: 100%; } </style>
 
-        <div class="modal fade" id="modal-crop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-crop" tabindex="-1" aria-labelledby="imageModal" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Crop Images</h5>
+                        <h5 class="modal-title" id="imageModal">Crop Images</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <div class="modal-body">
-
                         <div class="img-container">
+
                             <img src="" id="thumbnail" alt="" />
+
                         </div>
-
-                        <input type="hidden" name="img" value="" id="file" />
-                        <input type="hidden" name="x"   value="" id="x"    />
-                        <input type="hidden" name="y"   value="" id="y"    />
-                        <input type="hidden" name="w"   value="" id="w"    />
-                        <input type="hidden" name="h"   value="" id="h"    />
-
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
 
                 </div>
