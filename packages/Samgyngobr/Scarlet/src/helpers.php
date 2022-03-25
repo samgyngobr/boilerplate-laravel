@@ -126,17 +126,16 @@ function formGen( $fields, $action )
 
             case '8': // image
                 if( !isset( $value['value'] ) )
-                    $btn = '<div class="input-group">
-                                <input type="file"
-                                    class="form-control img-upload"
-                                    id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . '
-                                    data-url="/admin/sk/upload-image"
-                                    data-height="' . $additional['image_height'] . '"
-                                    data-width="' . $additional['image_width'] . '"
-                                    data-target="#target_' . $value['name'] . '"
-                                    data-loading="#loading_' . $value['name'] . '"
-                                    >
-                            </div>';
+                    $btn = '<input type="file"
+                                class="form-control img-upload"
+                                id="' . $value['name'] . '" ' . ( ( $action=='edit' ) ? '' : $required ) . '
+                                data-url="/admin/sk/upload-image"
+                                data-height="' . $additional['image_height'] . '"
+                                data-width="' . $additional['image_width'] . '"
+                                data-target="#target_' . $value['name'] . '"
+                                data-loading="#loading_' . $value['name'] . '"
+                                >
+                            ';
                 else
                     $btn = '<div class="input-group">
                                 <input type="file"
@@ -148,7 +147,9 @@ function formGen( $fields, $action )
                                     data-target="#target_' . $value['name'] . '"
                                     data-loading="#loading_' . $value['name'] . '"
                                     >
-                                <a class="btn btn-outline-secondary" href="' . '/storage' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
+                                <div class="input-group-append">
+                                    <a class="btn btn-outline-secondary btn-modal-preview" href="' . '/storage' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
+                                </div>
                             </div>';
                 $str .= '
                     <div class="mb-3 row">

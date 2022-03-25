@@ -97,6 +97,8 @@
             </div>
             <!-- End of Main Content -->
 
+            @include('includes.admin.modal-preview')
+
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -172,6 +174,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script >
         $( document ).ready(function() {
+
             $('.delete').on('click', function(e){
 
                 e.preventDefault();
@@ -194,6 +197,16 @@
                 })
 
             });
+
+            $('.btn-modal-preview').on( 'click', function( e ){
+
+                e.preventDefault();
+
+                $('#preview').attr('src', $(this).attr('href'));
+                $('#modal-preview').modal();
+
+            });
+
         });
     </script>
 
