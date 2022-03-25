@@ -285,7 +285,7 @@ class ScarletData extends Model
 
         Image::open( $tmp_name )
             ->crop( $x, $y, $w, $h )
-            //->resize( $post['width'], $post['height'] )
+            ->scaleResize( $post['width'], $post['height'] )
             ->save( $filename, $ext );
 
         return $img;
