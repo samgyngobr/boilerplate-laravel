@@ -2,11 +2,12 @@
 
 namespace Samgyngobr\Scarlet\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Exception;
+use Gregwar\Image\Image;
 
 class ScarletData extends Model
 {
@@ -258,7 +259,7 @@ class ScarletData extends Model
     public static function processImage( $input, $post, $acao )
     {
         // na edição, não editar quando n informado
-        if( $acao=='edit' and ( $post->get() == '' ) )
+        if( $acao == 'edit' and $post == '' )
             return $input['value'];
 
         // item obrigatorio?
@@ -268,16 +269,26 @@ class ScarletData extends Model
         if(!$post)
             return null;
 
-        $post_array = (array) $post;
-        $keys       = array_keys( $post_array );
-        $filename   = $post_array[ $keys[1] ];
+        $post = json_decode( $post, true );
 
-        $ext  = explode( '.', $filename );
-        $file = uniqid() . '.' . $ext[ count( $ext )-1 ];
+        $x = ( integer ) $post['crop']['x'];
+        $y = ( integer ) $post['crop']['y'];
+        $w = ( integer ) $post['crop']['width'];
+        $h = ( integer ) $post['crop']['height'];
 
-        $post->move( '.' . \Config::get('app.sk_file_path'), $file );
+        $tmp_name = public_path() . '/storage/uploads/files/' . $post['file'];
+        $aux      = explode('.', $post['file']);
+        $ext      = end( $aux );
+        $ext      = ( $ext == 'png' ) ? 'png' : 'jpg';
+        $img      = uniqid() . "." . $ext;
+        $filename = public_path() . '/storage/uploads/files/' . $img;
 
-        return $file;
+        Image::open( $tmp_name )
+            ->crop( $x, $y, $w, $h )
+            //->resize( $post['width'], $post['height'] )
+            ->save( $filename, $ext );
+
+        return $img;
     }
 
 

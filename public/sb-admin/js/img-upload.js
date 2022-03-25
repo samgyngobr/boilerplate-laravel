@@ -3,6 +3,12 @@
 
 // https://github.com/fengyuanchen/cropperjs/blob/main/README.md
 
+var _cropper;
+var _data;
+var _width;
+var _height;
+var _target;
+
 var AjaxFileUploader = function( target, loading, width, height ) {
 
     this._file = null;
@@ -23,12 +29,18 @@ var AjaxFileUploader = function( target, loading, width, height ) {
         xhr.onload = function (e) {
 
             $(loading).addClass('d-none');
-            $('#modal-crop').modal();
 
             var jsonResponse = JSON.parse( xhr.responseText );
 
             if( jsonResponse.success == true )
-                loadCropper( jsonResponse.message, width, height, target )
+            {
+                _data   = jsonResponse.message;
+                _width  = width;
+                _height = height;
+                _target = target;
+
+                $('#modal-crop').modal();
+            }
             else
                 console.log('error')
         };
@@ -89,31 +101,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 
-function loadCropper( data, width, height, target )
-{
-    $('#thumbnail').attr("src", data.path + data.file);
+
+$('#modal-crop').on('shown.bs.modal', function () {
+
+    $('#thumbnail').attr("src", _data.path + _data.file);
 
     var Cropper   = window.Cropper;
     var container = document.querySelector('.img-container');
     var image     = container.getElementsByTagName('img').item(0);
 
-    var cropper = new Cropper( image, {
-        aspectRatio  : width/height,
+    _cropper = new Cropper( image, {
+        aspectRatio  : _width / _height,
         zoomable     : false,
         rotatable    : false,
         scalable     : false,
         viewMode     : 1,
         crop         : function(e) {
 
-            console.log(e);
-
-            $( target ).val( JSON.stringify({
-                'file'  : data.file,
+            $( _target ).val( JSON.stringify({
+                'file'  : _data.file,
                 'crop'  : e.detail,
-                'width' : width,
-                'height': height,
+                'width' : _width,
+                'height': _height,
             }) );
 
         }
     });
-}
+
+}).on('hidden.bs.modal', function () {
+
+    if( _cropper )
+        _cropper.destroy();
+});

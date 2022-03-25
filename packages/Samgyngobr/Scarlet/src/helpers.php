@@ -148,7 +148,7 @@ function formGen( $fields, $action )
                                     data-target="#target_' . $value['name'] . '"
                                     data-loading="#loading_' . $value['name'] . '"
                                     >
-                                <a class="btn btn-outline-secondary" href="' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
+                                <a class="btn btn-outline-secondary" href="' . '/storage' . Config::get('app.sk_file_path') . $value['value'] . '" target="_blank" ><i class="fa fa-download"></i></a>
                             </div>';
                 $str .= '
                     <div class="mb-3 row">
