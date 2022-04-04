@@ -276,19 +276,17 @@ class ScarletData extends Model
         $w = ( integer ) $post['crop']['width'];
         $h = ( integer ) $post['crop']['height'];
 
-        $aux_path = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
-
-        $tmp_name = public_path() . '/storage/' . $aux_path . '/' . $post['file'];
+        $tmp_name = public_path() . '/storage' . \Config::get('app.sk_file_path') . $post['file'];
         $aux      = explode('.', $post['file']);
         $ext      = end( $aux );
         $ext      = ( $ext == 'png' ) ? 'png' : 'jpg';
         $img      = uniqid() . "." . $ext;
-        $filename = public_path() . '/storage/' . $aux_path . '/' . $img;
+        $filename = public_path() . '/storage' . \Config::get('app.sk_file_path') . $img;
 
         Image::open( $tmp_name )
             ->crop( $x, $y, $w, $h )
             ->scaleResize( $post['width'], $post['height'] )
-            ->save( $filename, $ext );
+            ->save( $filename, $ext, 85 );
 
         return $img;
     }

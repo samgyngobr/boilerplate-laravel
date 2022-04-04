@@ -534,8 +534,7 @@ class Scarlet extends Model
 
     public function saveUpload( $post )
     {
-        $ext  = explode( '.', $post->getClientOriginalName() );
-        $file = uniqid() . '.' . $ext[ count( $ext )-1 ];
+        $file = uniqid() . '.' . $post->getClientOriginalExtension();
         $aux  = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
         $res  = $post->storeAs( 'public/' . $aux, $file );
 
