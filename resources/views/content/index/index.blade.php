@@ -16,7 +16,9 @@
             <div class=" pb-5 mb-5 border-bottom ">
 
                 <h1>{{ $aboutUs['title'] }}</h1>
-                {{ $aboutUs['content'] }}
+                {!! $aboutUs['content'] !!}
+
+                <img src="{{ '/storage/uploads/files/' . $aboutUs['imagem'] }}">
 
             </div>
 

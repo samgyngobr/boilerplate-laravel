@@ -59,7 +59,7 @@
         <div class="col-md-2 mb-4" >
             <div class="card elevation">
 
-                <img class="card-img-top" src="{{Config::get('app.sk_file_path_thumbs')}}{{$img->img}}" alt="{{ $img->legend ?? '' }}">
+                <img class="card-img-top" src="/storage{{Config::get('app.sk_file_path_thumbs')}}{{$img->img}}" alt="{{ $img->legend ?? '' }}">
 
                 <div class="card-body">
                     <p class="card-text">
