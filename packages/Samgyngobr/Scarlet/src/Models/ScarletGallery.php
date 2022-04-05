@@ -27,10 +27,8 @@ class ScarletGallery extends Model
         $ext  = ( $img->getClientOriginalExtension() == 'png' ) ? 'png' : 'jpg';
         $file = uniqid() . "." . $ext;
 
-        $aux  = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
-        $res  = $img->storeAs( 'public/' . $aux, $file );
-
-        asset('public/' . $aux . '/' . $file);
+        Image::open( $img->getPathname() )
+            ->save( public_path() . '/storage' . \Config::get('app.sk_file_path') . $file, $ext );
 
         Image::open( $img->getPathname() )
             ->zoomCrop(250, 250)

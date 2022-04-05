@@ -538,11 +538,9 @@ class Scarlet extends Model
         $aux  = implode( '/', array_filter( explode( '/', \Config::get('app.sk_file_path') ) ) );
         $res  = $post->storeAs( 'public/' . $aux, $file );
 
-        asset('public/' . $aux . '/' . $file);
-
         return [
             'file' => $file,
-            'path' => '/storage/' . $aux . '/'
+            'path' => '/storage' . \Config::get('app.sk_file_path')
         ];
     }
 

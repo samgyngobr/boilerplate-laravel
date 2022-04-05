@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <div class="img-container">
 
-                    <img src="" id="preview" alt="" />
+                    <img src="" id="preview" alt="" style="max-width: 100%;" />
 
                 </div>
             </div>
