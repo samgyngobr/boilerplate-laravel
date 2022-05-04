@@ -46,5 +46,8 @@ return [
     'field_required' => 'Campo :field é Obrigatório!',
     'area_not_found' => 'Área não Encontrada!',
     'title_invalid'  => 'Título Invalido!',
+    'crop_image'     => 'Recortar Imagem',
+    'loading'        => 'Carregando...',
+    'preview'        => 'Visualizar',
 
 ];

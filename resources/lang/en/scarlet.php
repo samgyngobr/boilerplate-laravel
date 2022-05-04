@@ -46,5 +46,8 @@ return [
     'field_required' => 'Field :field is required!',
     'area_not_found' => 'Area not found!',
     'title_invalid'  => 'Title Invalid!',
+    'crop_image'     => 'Crop Images',
+    'loading'        => 'Loading...',
+    'preview'        => 'Preview',
 
 ];

@@ -29,7 +29,7 @@
     <li class="nav-item {{ substr( Route::currentRouteName(), 0, 13 ) == 'admin.config.' ? 'active' : '' }}">
         <a class="nav-link" href="/admin/sk/config" >
             <i class="fas fa-fw fa-cog"></i>
-            <span>Configuration</span>
+            <span>{{ __('scarlet.configuration') }}</span>
         </a>
     </li>
 

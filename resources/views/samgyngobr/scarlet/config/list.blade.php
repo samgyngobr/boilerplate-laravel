@@ -10,7 +10,7 @@
             <i class="fas fa-plus-circle"></i>
         </a>
 
-        <h1 class="h3 mb-0 text-gray-800">Configuration</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ __('scarlet.configuration') }}</h1>
 
     </div>
 

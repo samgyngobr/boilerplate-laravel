@@ -157,7 +157,7 @@ function formGen( $fields, $action )
                         <input type="hidden" name="' . $value['name'] . '" id="target_' . $value['name'] . '" value=""  >
                         <div class="col-md-10">
                             ' . $btn . '
-                            <div class="d-none" id="loading_' . $value['name'] . '" >Loading...</div>
+                            <div class="d-none" id="loading_' . $value['name'] . '" >' . __( 'scarlet.loading' ) . '</div>
                         </div>
                     </div>
                     ';
@@ -213,8 +213,8 @@ function formGen( $fields, $action )
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="imageModal">Crop Images</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" id="imageModal">' . __('scarlet.crop_image') . '</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="' . __('scarlet.close') . '">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -228,7 +228,7 @@ function formGen( $fields, $action )
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">' . __('scarlet.close') . '</button>
                     </div>
 
                 </div>
